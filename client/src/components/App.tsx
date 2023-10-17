@@ -1,7 +1,16 @@
-import { useEffect } from "react";
-import Welcome from "./Welcome";
+import { useEffect, useState } from "react";
+import Welcome from "../Welcome";
+import Chat from "./Chat";
+import { AppContainer } from "../styles/App";
+import ChatRooms from "./Chat";
 
 function App() {
+  const [showWelcome, setShowWelcome] = useState(true);
+
+  const handleGetStarted = () => {
+    setShowWelcome(false);
+  };
+
   useEffect(() => {
     const socket = new WebSocket(`ws://${import.meta.env.VITE_SERVER_URL}`);
 
@@ -18,7 +27,15 @@ function App() {
     };
   }, []);
 
-  return <Welcome />;
+  return (
+    <AppContainer>
+      {showWelcome ? (
+        <Welcome onGetStartedClick={handleGetStarted} />
+      ) : (
+        <ChatRooms />
+      )}
+    </AppContainer>
+  );
 }
 
 export default App;
