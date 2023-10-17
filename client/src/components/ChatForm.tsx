@@ -10,8 +10,8 @@ function ChatForm() {
     socket.onopen = () => {
       console.log("Connected to the server!");
     };
-    socket.onmessage = (event) => {
-      console.log(`New message: ${event.data} from the server`);
+    socket.onmessage = (msg) => {
+      console.log(`New message: ${msg.data} from the server`);
     };
     socket.onclose = () => {
       console.log(`Disconnected from the server!`);
