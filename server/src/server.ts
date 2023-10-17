@@ -19,7 +19,7 @@ const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
 
 const handleConnection = (socket: WebSocket) => {
-  console.log(socket);
+  socket.send("Hello from the server!");
 };
 
 wss.on("connection", handleConnection);
