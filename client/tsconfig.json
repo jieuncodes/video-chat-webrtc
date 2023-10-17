@@ -10,20 +10,6 @@
       "esnext"
     ],
     "baseUrl": "./src",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@/lib/*": [
-        "./src/lib/*"
-      ],
-      "@/types": [
-        "./src/types/*"
-      ],
-      "@/ui": [
-        "./src/ui/*"
-      ],
-    },
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

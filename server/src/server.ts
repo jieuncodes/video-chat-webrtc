@@ -19,8 +19,10 @@ const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
 
 const onSocketClose = () => console.log("👋 Disconnected from Browser");
-const onSocketMessage = (message: string) => console.log(message);
 
+const onSocketMessage = (message: WebSocket) => {
+  console.log(message.toString());
+};
 const handleConnection = (socket: WebSocket) => {
   console.log("👍 Connected to Browser ");
   socket.on("close", onSocketClose);

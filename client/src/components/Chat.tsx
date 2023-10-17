@@ -1,5 +1,5 @@
-import { Button } from "@nextui-org/react";
 import { Icons } from "./Icons";
+import ChatForm from "./ChatForm";
 
 function Chat() {
   return (
@@ -11,18 +11,7 @@ function Chat() {
       <div className="ongoing-msg-area">
         <ul></ul>
       </div>
-      <div className="input-area flex flex-col items-center justify-center">
-        <form action="" className="flex items-center justify-center">
-          <input
-            type="text"
-            placeholder="write a message"
-            className="w-[400px] h-10 mr-2 rounded-md opacity-50"
-          />
-          <Button color="primary" className="h-10 font-bold text-lg box-border">
-            <Icons.send />
-          </Button>
-        </form>
-      </div>
+      <ChatForm />
     </div>
   );
 }
