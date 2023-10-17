@@ -1,8 +1,8 @@
-import "dotenv/config";
 import cors from "cors";
+import "dotenv/config";
 import express, { Request, Response } from "express";
 import http from "http";
-import { WebSocketServer } from "ws";
+import { WebSocket, WebSocketServer } from "ws";
 
 const CLIENT_PORT = process.env.CLIENT_PORT || 3000;
 
@@ -18,10 +18,15 @@ app.get("/*", (req: Request, res: Response) => res.redirect("/"));
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
 
-const handleConnection = (socket: WebSocket) => {
-  socket.send("Hello from the server!");
-};
+const onSocketClose = () => console.log("👋 Disconnected from Browser");
+const onSocketMessage = (message: string) => console.log(message);
 
+const handleConnection = (socket: WebSocket) => {
+  console.log("👍 Connected to Browser ");
+  socket.on("close", onSocketClose);
+  socket.on("message", onSocketMessage);
+  socket.send("hello!!!");
+};
 wss.on("connection", handleConnection);
 
 server.listen(process.env.PORT, () => {

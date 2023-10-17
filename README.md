@@ -7,5 +7,8 @@
 ![NODE.JS](https://img.shields.io/badge/Node.js-339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white)
 
 #Game plan
+-[x] Use webSocket
 -[ ] Realtime video chat
 -[ ] Realtime text chat
+-[ ] Show who is in the room.
+-[ ] List friends online
