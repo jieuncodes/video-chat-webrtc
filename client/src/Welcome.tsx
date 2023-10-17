@@ -1,5 +1,6 @@
 import { Button } from "@nextui-org/react";
 import {
+  Footer,
   GetStartedBtn,
   WelcomeContainer,
   WelcomeContent,
@@ -24,6 +25,9 @@ function Welcome() {
           Get Started
         </GetStartedBtn>
       </WelcomeContent>
+      <Footer>
+        <span>© 2023 This is Demo project made by jieuncodes</span>
+      </Footer>
     </WelcomeContainer>
   );
 }

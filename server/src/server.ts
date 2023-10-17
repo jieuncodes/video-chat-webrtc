@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
-import path from "path";
+import http from "http";
+import { WebSocketServer } from "ws";
 
 const app = express();
 const PORT = 8080;
@@ -9,6 +10,9 @@ app.get("/", (req: Request, res: Response) => {
 });
 app.get("/*", (req: Request, res: Response) => res.redirect("/"));
 
-app.listen(PORT, () => {
+const server = http.createServer(app);
+const wss = new WebSocketServer({ server });
+
+server.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`);
 });

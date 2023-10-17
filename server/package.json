@@ -24,7 +24,8 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "ws": "^8.14.2"
   },
   "type": "module",
   "module": "esnext"
