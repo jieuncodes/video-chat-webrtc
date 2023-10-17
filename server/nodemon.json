@@ -1,0 +1,4 @@
+{
+  "ignore": ["webpack.config.js"],
+  "exec": "ts-node src/server.ts"
+}
