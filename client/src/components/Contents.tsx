@@ -1,8 +1,10 @@
+import TextChatAndPeople from "./TextChatAndPeople";
+
 function Contents() {
   return (
     <div className="grid grid-cols-[2fr_1fr]">
-      <div></div>
-      <div></div>
+      <div className="video-area"></div>
+      <TextChatAndPeople />
     </div>
   );
 }

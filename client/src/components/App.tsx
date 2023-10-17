@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Welcome from "../Welcome";
-import Chat from "./Chat";
+import Chat from "./ChatRooms";
 import { AppContainer } from "../styles/App";
-import ChatRooms from "./Chat";
+import ChatRooms from "./ChatRooms";
 
 function App() {
   const [showWelcome, setShowWelcome] = useState(true);

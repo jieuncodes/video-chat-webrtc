@@ -1,18 +1,29 @@
-import Contents from "./Contents";
-import Nav from "./Nav";
-import Footer from "./Footer";
-import Header from "./Header";
+import { Button } from "@nextui-org/react";
+import { Icons } from "./Icons";
 
-function ChatRooms() {
+function Chat() {
   return (
-    <div className="box-border w-[1600px] h-[750px] bg-white/10 rounded-lg border-white grid  grid-cols-[1fr_15fr]">
-      <Nav />
-      <div className="grid grid-rows-[1fr_9fr_1fr]">
-        <Header />
-        <Contents />
-        <Footer />
+    <div className="grid grid-rows-[1fr_4fr_1fr]">
+      <div className="flex flex-row items-center text-white text-2xl">
+        <Icons.messageSquare className="opacity-70 w-10 h-8 mt-1" />
+        <span className="font-bold ">Chat</span>
+      </div>
+      <div className="ongoing-msg-area">
+        <ul></ul>
+      </div>
+      <div className="input-area flex flex-col items-center justify-center">
+        <form action="" className="flex items-center justify-center">
+          <input
+            type="text"
+            placeholder="write a message"
+            className="w-[400px] h-10 mr-2 rounded-md opacity-50"
+          />
+          <Button color="primary" className="h-10 font-bold text-lg box-border">
+            <Icons.send />
+          </Button>
+        </form>
       </div>
     </div>
   );
 }
-export default ChatRooms;
+export default Chat;
