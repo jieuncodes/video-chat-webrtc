@@ -20,11 +20,15 @@ const wss = new WebSocketServer({ server });
 
 const onSocketClose = () => console.log("👋 Disconnected from Browser");
 
+const sockets: WebSocket[] = [];
+
 const handleConnection = (socket: WebSocket) => {
+  sockets.push(socket);
   console.log("👍 Connected to Browser ");
   socket.on("close", onSocketClose);
   socket.on("message", (message: WebSocket) => {
     console.log("server got this:", message.toString());
+    sockets.forEach((aSocket) => aSocket.send(message.toString()));
     socket.send(message.toString());
   });
 };

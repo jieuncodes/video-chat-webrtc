@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 function ChatForm() {
   const [currSocket, setCurrSocket] = useState<WebSocket | null>(null);
+
   useEffect(() => {
     const socket = new WebSocket(`ws://${import.meta.env.VITE_SERVER_URL}`);
 
@@ -32,7 +33,6 @@ function ChatForm() {
   return (
     <div className="input-area flex flex-col items-center justify-center">
       <form
-        action=""
         className="flex items-center justify-center"
         onSubmit={handleSubmitChat}
       >
