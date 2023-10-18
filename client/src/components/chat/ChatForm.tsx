@@ -26,11 +26,14 @@ function ChatForm() {
 
   const handleSubmitChat = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const inputValue = (e.currentTarget.elements[0] as HTMLInputElement).value;
-    const messageString = inputValue.toString();
-    currSocket?.send(messageString);
-    (e.currentTarget.elements[0] as HTMLInputElement).value = "";
+    const inputField = e.currentTarget.elements[0] as HTMLInputElement;
+    const messageStr = inputField.value.toString();
+    if (currSocket && messageStr.trim() !== "") {
+      currSocket.send(messageStr);
+      inputField.value = "";
+    }
   };
+
   return (
     <FormBox>
       <Form onSubmit={handleSubmitChat}>

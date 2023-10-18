@@ -1,3 +1,3 @@
-import { MessageSquare, Send } from "lucide-react";
+import { LogIn, MessageSquare, Send } from "lucide-react";
 
-export const Icons = { messageSquare: MessageSquare, send: Send };
+export const Icons = { messageSquare: MessageSquare, send: Send, login: LogIn };
