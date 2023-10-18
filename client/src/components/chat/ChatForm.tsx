@@ -2,27 +2,10 @@ import { Button } from "@nextui-org/react";
 import { Icons } from "../Icons";
 import { useEffect, useState } from "react";
 import { FormBox, Input, Form } from "./../../styles/Chat";
+import useSocket from "../../hooks/useSocket";
 
 function ChatForm() {
-  const [currSocket, setCurrSocket] = useState<WebSocket | null>(null);
-
-  useEffect(() => {
-    const socket = new WebSocket(`ws://${import.meta.env.VITE_SERVER_URL}`);
-
-    socket.onopen = () => {
-      console.log("Connected to the server!");
-    };
-    socket.onmessage = (msg) => {
-      console.log(`New message: ${msg.data} from the server`);
-    };
-    socket.onclose = () => {
-      console.log(`Disconnected from the server!`);
-    };
-    setCurrSocket(socket);
-    return () => {
-      socket.close();
-    };
-  }, []);
+  const { currSocket } = useSocket(`ws://${import.meta.env.VITE_SERVER_URL}`);
 
   const handleSubmitChat = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
