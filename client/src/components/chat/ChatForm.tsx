@@ -12,7 +12,9 @@ function ChatForm() {
     const inputField = e.currentTarget.elements[0] as HTMLInputElement;
     const messageStr = inputField.value.toString();
     if (currSocket && messageStr.trim() !== "") {
-      currSocket.send(makeMessage({ type: "message", payload: messageStr }));
+      currSocket.send(
+        makeMessage({ type: "new_message", payload: messageStr })
+      );
       inputField.value = "";
     }
   };

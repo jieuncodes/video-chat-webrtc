@@ -18,22 +18,38 @@ app.get("/*", (req: Request, res: Response) => res.redirect("/"));
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
 
-const onSocketClose = () => console.log("👋 Disconnected from Browser");
+const onSocketClose = () => console.info("👋 Disconnected from Browser");
 
 const sockets: WebSocket[] = [];
 
-const handleConnection = (socket: WebSocket) => {
+interface CustomWebSocket extends WebSocket {
+  nickname?: string;
+}
+const handleConnection = (socket: CustomWebSocket) => {
   sockets.push(socket);
-  console.log("👍 Connected to Browser ");
+  socket["nickname"] = "Anon";
+
+  console.info("👍 Connected to Browser ");
   socket.on("close", onSocketClose);
-  socket.on("message", (message: WebSocket) => {
-    console.log("server got this:", message.toString());
-    sockets.forEach((aSocket) => aSocket.send(message.toString()));
-    socket.send(message.toString());
+
+  socket.on("message", (msg: WebSocket) => {
+    console.info("server got this:", msg.toString());
+
+    const parsedMsg = JSON.parse(msg.toString());
+    switch (parsedMsg.type) {
+      case "new_message":
+        sockets.forEach((aSocket) =>
+          aSocket.send(`${socket.nickname}: ${parsedMsg.payload}`)
+        );
+        break;
+      case "nickname":
+        socket["nickname"] = parsedMsg.payload;
+        break;
+    }
   });
 };
 wss.on("connection", handleConnection);
 
 server.listen(process.env.PORT, () => {
-  console.log(`🚀 Server is connected!`);
+  console.info(`🚀 Server is connected!`);
 });

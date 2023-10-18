@@ -7,13 +7,13 @@ function useSocket(URL: string) {
     const socket = new WebSocket(URL);
 
     socket.onopen = () => {
-      console.log("Connected to the server!");
+      console.info("Connected to the server!");
     };
     socket.onmessage = (msg) => {
-      console.log(`New message: ${msg.data} from the server`);
+      console.info(`New message: ${msg.data} from the server`);
     };
     socket.onclose = () => {
-      console.log(`Disconnected from the server!`);
+      console.info(`Disconnected from the server!`);
     };
     setCurrSocket(socket);
     return () => {
