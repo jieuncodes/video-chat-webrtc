@@ -1,8 +1,8 @@
 import { Button } from "@nextui-org/react";
-import { Icons } from "../Icons";
-import { useEffect, useState } from "react";
-import { FormBox, Input, Form } from "./../../styles/Chat";
+import { makeMessage } from "../../helpers";
 import useSocket from "../../hooks/useSocket";
+import { Icons } from "../Icons";
+import { Form, FormBox, Input } from "./../../styles/Chat";
 
 function ChatForm() {
   const { currSocket } = useSocket(`ws://${import.meta.env.VITE_SERVER_URL}`);
@@ -12,7 +12,7 @@ function ChatForm() {
     const inputField = e.currentTarget.elements[0] as HTMLInputElement;
     const messageStr = inputField.value.toString();
     if (currSocket && messageStr.trim() !== "") {
-      currSocket.send(messageStr);
+      currSocket.send(makeMessage({ type: "message", payload: messageStr }));
       inputField.value = "";
     }
   };
