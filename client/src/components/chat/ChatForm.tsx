@@ -1,6 +1,7 @@
 import { Button } from "@nextui-org/react";
-import { Icons } from "./Icons";
+import { Icons } from "../Icons";
 import { useEffect, useState } from "react";
+import { FormBox, Input, Form } from "./../../styles/Chat";
 
 function ChatForm() {
   const [currSocket, setCurrSocket] = useState<WebSocket | null>(null);
@@ -31,16 +32,9 @@ function ChatForm() {
     (e.currentTarget.elements[0] as HTMLInputElement).value = "";
   };
   return (
-    <div className="input-area flex flex-col items-center justify-center">
-      <form
-        className="flex items-center justify-center"
-        onSubmit={handleSubmitChat}
-      >
-        <input
-          type="text"
-          placeholder="write a message"
-          className="w-[400px] h-10 mr-2 rounded-md opacity-50"
-        />
+    <FormBox>
+      <Form onSubmit={handleSubmitChat}>
+        <Input type="text" placeholder="write a message" />
         <Button
           type="submit"
           color="primary"
@@ -48,8 +42,8 @@ function ChatForm() {
         >
           <Icons.send />
         </Button>
-      </form>
-    </div>
+      </Form>
+    </FormBox>
   );
 }
 export default ChatForm;

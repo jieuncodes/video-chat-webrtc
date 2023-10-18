@@ -1,4 +1,4 @@
-import Chat from "./Chat";
+import Chat from "./chat/Chat";
 import People from "./People";
 
 function TextChatAndPeople() {
