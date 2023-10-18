@@ -1,10 +1,16 @@
+import { Button } from "@nextui-org/react";
 import Chat from "./chat/Chat";
-import People from "./People";
 
 function TextChatAndPeople() {
   return (
-    <div className="grid grid-rows-2">
-      <People />
+    <div className="h-full w-full p-4 grid grid-rows-[auto_1fr">
+      <div className="flex flex-row p-4 justify-between">
+        <h1 className="text-2xl text-white">Group Chat</h1>
+        <div className="flex gap-2">
+          <Button variant="solid">Messages</Button>
+          <Button variant="ghost">Participants</Button>
+        </div>
+      </div>
       <Chat />
     </div>
   );

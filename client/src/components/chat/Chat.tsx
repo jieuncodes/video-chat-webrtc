@@ -1,13 +1,11 @@
 import ChatForm from "./ChatForm";
-import ChatHeader from "./ChatHeader";
-import MessageArea from "./MessageArea";
+import Messages from "./Messages";
 import { ChatBox } from "../../styles/Chat";
 
 function Chat() {
   return (
     <ChatBox>
-      <ChatHeader />
-      <MessageArea />
+      <Messages />
       <ChatForm />
     </ChatBox>
   );

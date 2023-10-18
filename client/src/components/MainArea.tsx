@@ -3,7 +3,7 @@ import Header from "./Header";
 
 function MainArea() {
   return (
-    <div className="grid grid-rows-[1fr_12fr]">
+    <div className="grid grid-rows-[1.5fr_12fr]">
       <Header />
       <Contents />
     </div>

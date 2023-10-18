@@ -17,6 +17,10 @@ app.get("/*", (req: Request, res: Response) => res.redirect("/"));
 const httpServer = http.createServer(app);
 const wsServer = new Server(httpServer);
 
+wsServer.on("connection", (socket) => {
+  console.log("", socket);
+});
+
 httpServer.listen(process.env.PORT, () => {
   console.info(`🚀 Server is connected!`);
 });

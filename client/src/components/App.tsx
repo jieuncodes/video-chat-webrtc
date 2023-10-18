@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Welcome from "../Welcome";
 import { AppContainer } from "../styles/App";
-import ChatRooms from "./chat/ChatRooms";
+import MainPage from "./MainPage";
 import Auth from "./Auth";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
       {showWelcome ? (
         <Welcome onGetStartedClick={handleGetStarted} />
       ) : isAuthorizedUser ? (
-        <ChatRooms />
+        <MainPage />
       ) : (
         <Auth setIsAuthorizedUser={setIsAuthorizedUser} />
       )}

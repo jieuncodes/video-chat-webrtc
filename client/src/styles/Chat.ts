@@ -1,6 +1,6 @@
 import tw from "tailwind-styled-components";
 
-export const ChatBox = tw.div`grid grid-rows-[1fr_5fr_1fr]`;
+export const ChatBox = tw.div`flex flex-col h-full w-full justify-between `;
 
 export const FormBox = tw.div`flex flex-col items-center justify-center`;
 export const Form = tw.form`flex items-center justify-center w-full h-full`;
