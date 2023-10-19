@@ -5,11 +5,18 @@ import { socket } from "../socket";
 function CreateRoom() {
   const [isConnected, setIsConnected] = useState(socket.connected);
 
+  console.log("socket", socket);
   const handleRoomSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     const inputElement = form.elements[0] as HTMLInputElement;
     console.log(inputElement.value);
+
+    socket.emit("enter_room", { payload: inputElement.value }, () =>
+      console.log("server is done!")
+    );
+
+    inputElement.value = "";
   };
 
   return (
