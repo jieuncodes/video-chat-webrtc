@@ -23,16 +23,9 @@ const wsServer = new Server(httpServer, {
 });
 
 wsServer.on("connection", (socket) => {
-  console.log("socket.id", socket.id);
-  socket.onAny((event) => {
-    console.log(`socket event:${event}`);
-  });
   socket.on("room", (roomName, done) => {
     socket.join(roomName);
-    console.log("", socket.rooms);
-    setTimeout(() => {
-      done();
-    }, 1000);
+    done();
   });
 });
 httpServer.listen(process.env.PORT, () => {

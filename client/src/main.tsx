@@ -2,11 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./components/App";
 import { NextUIProvider } from "@nextui-org/react";
+import { RecoilRoot } from "recoil";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <NextUIProvider>
-      <App />
+      <RecoilRoot>
+        <App />
+      </RecoilRoot>
     </NextUIProvider>
   </React.StrictMode>
 );
