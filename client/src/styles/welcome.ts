@@ -1,10 +1,7 @@
 import { Button } from "@nextui-org/react";
 import tw from "tailwind-styled-components";
 
-export const WelcomeContent = tw.div`flex flex-col items-center justify-center h-full
-after:(absolute inset-0 content z-10 bg-gradient-to-r from-black/30 via-black/50 to-black)
-
-
+export const WelcomeContent = tw.div`flex flex-col items-center justify-center h-full after:(fixed w-full left-0 top-0 z-10 bg-gradient-to-r from-black/30 via-black/50 to-black)
 `;
 
 export const WelcomeTitleWhite = tw.h1` inline font-bold text-8xl bg-clip-text text-transparent bg-white ml-3`;

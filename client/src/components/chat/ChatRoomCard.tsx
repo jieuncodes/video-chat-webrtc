@@ -1,7 +1,14 @@
 import { Button, Card, CardFooter, CardHeader, Image } from "@nextui-org/react";
+import { useNavigate } from "react-router-dom";
 import { Room } from "types";
 
 function ChatRoomCard({ room }: { room: Room }) {
+  const navigate = useNavigate();
+
+  const handleJoinButtonClick = () => {
+    navigate(`/chat/${room.id}`);
+  };
+
   return (
     <Card isFooterBlurred className="w-[200px] h-[200px]">
       <CardHeader className="absolute z-10 top-1 flex-col items-start">
@@ -21,7 +28,13 @@ function ChatRoomCard({ room }: { room: Room }) {
           <p className="text-white/80 text-tiny">Owner: Jieun</p>
           <p className="text-white/80 text-tiny">Ginger, Tommy,...</p>
         </div>
-        <Button className="text-tiny" color="primary" radius="full" size="sm">
+        <Button
+          className="text-tiny"
+          color="primary"
+          radius="full"
+          size="sm"
+          onPress={handleJoinButtonClick}
+        >
           Join
         </Button>
       </CardFooter>

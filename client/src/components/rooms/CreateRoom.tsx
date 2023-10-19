@@ -1,17 +1,10 @@
 import { Input } from "@nextui-org/react";
 import { socket } from "../../socket";
 import { SubTitle, UnderLineInputBox } from "../../styles/App";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { isUserInRoomState, roomListState } from "../../atoms";
-import { useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { roomListState } from "../../atoms";
 
-interface CreateRoomInterface {
-  isNoRoom: boolean;
-  setIsNoRoom: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-function CreateRoom({ isNoRoom, setIsNoRoom }: CreateRoomInterface) {
-  const setIsUserInRoom = useSetRecoilState(isUserInRoomState);
+function CreateRoom() {
   const [roomList, setRoomList] = useRecoilState(roomListState);
 
   const doorKeeper = (msg: String) => {
@@ -20,7 +13,6 @@ function CreateRoom({ isNoRoom, setIsNoRoom }: CreateRoomInterface) {
       return;
     }
     console.log("msg", msg);
-    setIsUserInRoom(true);
 
     //TODO: direct user into the room
   };
@@ -38,7 +30,7 @@ function CreateRoom({ isNoRoom, setIsNoRoom }: CreateRoomInterface) {
   return (
     <div className="w-96 mb-28">
       <form onSubmit={handleRoomSubmit}>
-        {isNoRoom ? (
+        {roomList.length == 0 ? (
           <SubTitle>There are no rooms available. Create your own! </SubTitle>
         ) : (
           <SubTitle>Name of the room is... </SubTitle>

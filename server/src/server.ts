@@ -39,7 +39,7 @@ wsServer.on("connection", (socket) => {
 
     const newRoom = { id: roomIdCounter, name: roomName };
     roomIdCounter++;
-
+    console.log("new", newRoom);
     rooms.push(newRoom);
     wsServer.emit("updateRoomList", rooms);
     done(`Room ${roomName.payload} created!`);

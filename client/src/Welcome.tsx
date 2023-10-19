@@ -7,8 +7,10 @@ import {
   WelcomeTitlePink,
   WelcomeTitleWhite,
 } from "./styles/welcome";
+import { useNavigate } from "react-router-dom";
 
-function Welcome({ onGetStartedClick }: { onGetStartedClick: () => void }) {
+function Welcome() {
+  const navigate = useNavigate();
   return (
     <>
       <WelcomeContent>
@@ -23,7 +25,7 @@ function Welcome({ onGetStartedClick }: { onGetStartedClick: () => void }) {
         <GetStartedBtn
           color="primary"
           variant="shadow"
-          onPress={onGetStartedClick}
+          onPress={navigate("/auth")}
         >
           Get Started
         </GetStartedBtn>

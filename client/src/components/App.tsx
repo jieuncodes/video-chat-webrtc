@@ -22,28 +22,23 @@ function App() {
   return (
     <AppContainer>
       <Router>
-        {showWelcome ? (
-          <Welcome onGetStartedClick={handleGetStarted} />
-        ) : (
-          <Routes>
-            <Route
-              path="/auth"
-              element={<Auth setIsAuthorizedUser={setIsAuthorizedUser} />}
-            />
-            <Route
-              path="/rooms"
-              element={
-                isAuthorizedUser ? <MainPage /> : <Navigate to="/auth" />
-              }
-            />
-            <Route
-              path="/chat/:roomId"
-              element={
-                isAuthorizedUser ? <ChatRoom /> : <Navigate to="/auth" />
-              }
-            />
-          </Routes>
-        )}
+        <Routes>
+          <Route path="/" element={<Navigate to="/welcome" />} />
+
+          <Route path="/welcome" element={<Welcome />} />
+          <Route
+            path="/auth"
+            element={<Auth setIsAuthorizedUser={setIsAuthorizedUser} />}
+          />
+          <Route
+            path="/rooms"
+            element={isAuthorizedUser ? <MainPage /> : <Navigate to="/auth" />}
+          />
+          <Route
+            path="/chat/:roomId"
+            element={isAuthorizedUser ? <ChatRoom /> : <Navigate to="/auth" />}
+          />
+        </Routes>
       </Router>
     </AppContainer>
   );
