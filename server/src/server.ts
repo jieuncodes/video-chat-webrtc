@@ -3,6 +3,7 @@ import "dotenv/config";
 import express, { Request, Response } from "express";
 import http from "http";
 import { Server } from "socket.io";
+
 const CLIENT_PORT = process.env.CLIENT_PORT || 3000;
 console.log("", process.env.CLIENT_PORT);
 const app = express();
@@ -22,8 +23,13 @@ const wsServer = new Server(httpServer, {
 });
 
 wsServer.on("connection", (socket) => {
-  socket.on("enter_room", (message, done) => {
-    console.log(message);
+  console.log("socket.id", socket.id);
+  socket.onAny((event) => {
+    console.log(`socket event:${event}`);
+  });
+  socket.on("room", (roomName, done) => {
+    socket.join(roomName);
+    console.log("", socket.rooms);
     setTimeout(() => {
       done();
     }, 1000);
