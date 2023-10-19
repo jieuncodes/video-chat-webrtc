@@ -19,7 +19,8 @@ function Auth({
     const nickname = inputField.value.toString();
 
     setIsAuthorizedUser(true);
-    navigate("/main");
+    //navigate user to created room with id
+    navigate("/rooms");
   };
 
   return (

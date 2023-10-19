@@ -31,7 +31,7 @@ function App() {
               element={<Auth setIsAuthorizedUser={setIsAuthorizedUser} />}
             />
             <Route
-              path="/main"
+              path="/rooms"
               element={
                 isAuthorizedUser ? <MainPage /> : <Navigate to="/auth" />
               }

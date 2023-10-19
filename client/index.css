@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 /* 
 * {
     border: solid;
@@ -9,3 +10,21 @@
     border-color: skyblue;
 
 } */
+
+
+.text-stroke {
+    text-shadow: -0.5px -0.5px 0 white, 0.5px -0.5px 0 white, -0.5px 0.5px 0 white, 0.5px 0.5px 0 white;
+
+}
+
+.text-stroke-black {
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+    row-gap: 30px;
+}

@@ -5,6 +5,7 @@ import { useRecoilValue } from "recoil";
 import { isUserInRoomState } from "../atoms";
 
 function Contents() {
+  //TODO: replace noRoom state with len(rooms) - recoil
   const [isNoRoom, setIsNoRoom] = useState(true);
   const isUserInRoom = useRecoilValue(isUserInRoomState);
   return (
