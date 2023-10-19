@@ -14,7 +14,8 @@ app.get("/", (req: Request, res: Response) => {
 });
 app.get("/*", (req: Request, res: Response) => res.redirect("/"));
 
-const rooms: string[] = [];
+let roomIdCounter = 1000;
+const rooms: { id: number; name: string }[] = [];
 
 const httpServer = http.createServer(app);
 const wsServer = new Server(httpServer, {
@@ -27,13 +28,19 @@ wsServer.on("connection", (socket) => {
   socket.on("requestRooms", () => {
     socket.emit("receiveRooms", rooms);
   });
+
   socket.on("createRoom", (roomName, done) => {
     console.log("createRoom event received with data:", roomName.payload);
 
-    if (rooms.includes(roomName)) {
+    const roomExists = rooms.find((room) => room.name === roomName);
+    if (roomExists) {
       return done(`Room ${roomName} already exists!`);
     }
-    rooms.push(roomName);
+
+    const newRoom = { id: roomIdCounter, name: roomName };
+    roomIdCounter++;
+
+    rooms.push(newRoom);
     wsServer.emit("updateRoomList", rooms);
     done(`Room ${roomName.payload} created!`);
   });

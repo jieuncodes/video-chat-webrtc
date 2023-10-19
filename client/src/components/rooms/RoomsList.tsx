@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { socket } from "../../socket";
-import { roomListState } from "../../atoms";
 import { useRecoilState } from "recoil";
 import { Room } from "types";
+import { roomListState } from "../../atoms";
 import ChatRoomCard from "../../components/chat/ChatRoomCard";
+import { socket } from "../../socket";
 
 function RoomsList() {
   const [roomList, setRoomList] = useRecoilState<Room[]>(roomListState);
@@ -21,9 +21,9 @@ function RoomsList() {
   }, []);
 
   return (
-    <div className="p-12 w-full h-full grid-container ">
-      {roomList.map((room: Room, index) => (
-        <ChatRoomCard key={index} room={room} />
+    <div className="p-12 w-full h-full grid-container overflow-scroll">
+      {roomList.map((room: Room) => (
+        <ChatRoomCard key={room.id} room={room} />
       ))}
     </div>
   );
