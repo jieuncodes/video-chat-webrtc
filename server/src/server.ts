@@ -25,7 +25,8 @@ const wsServer = new Server(httpServer, {
 wsServer.on("connection", (socket) => {
   socket.on("room", (roomName, done) => {
     socket.join(roomName);
-    done();
+    done(`room ${roomName} joined!`);
+    socket.to(roomName).emit("welcome");
   });
 });
 httpServer.listen(process.env.PORT, () => {

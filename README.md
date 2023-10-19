@@ -9,6 +9,7 @@
 #Game plan
 -[x] Use webSocket
 -[ ] Realtime video chat
--[ ] Realtime text chat
--[ ] Show who is in the room.
+-[x] Realtime text chat
+-[ ] Display who is in the room.
 -[ ] List friends online
+-[ ] Share a link to invite a user into the created chat room.

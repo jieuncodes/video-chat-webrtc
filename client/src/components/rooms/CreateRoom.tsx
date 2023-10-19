@@ -11,7 +11,11 @@ interface CreateRoomInterface {
 
 function CreateRoom({ isNoRoom, setIsNoRoom }: CreateRoomInterface) {
   const setIsUserInRoom = useSetRecoilState(isUserInRoomState);
-  const showRoom = () => {};
+
+  const showRoom = () => {
+    setIsNoRoom(false);
+    //direct user into the room
+  };
 
   const handleRoomSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

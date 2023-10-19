@@ -6,3 +6,4 @@ export const MainContainer = tw.div`box-border w-[1600px] h-[750px] bg-black/60 
 
 export const SubTitle = tw.h1`text-2xl text-white font-bold mb-6`;
 export const UnderLineInputBox = tw.div`flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4 text-white`;
+export const Title = tw.h1`text-3xl text-white font-bold ml-6 -mb-3`;

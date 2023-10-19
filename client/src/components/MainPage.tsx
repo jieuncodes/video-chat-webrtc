@@ -12,7 +12,7 @@ function MainPage() {
     <MainContainer>
       <Nav />
       <MainArea />
-      {isUserInRoom && <ChatBox />}
+      {/* {isUserInRoom && <ChatBox />} */}
     </MainContainer>
   );
 }
