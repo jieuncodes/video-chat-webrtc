@@ -42,7 +42,7 @@ wsServer.on("connection", (socket) => {
     console.log("new", newRoom);
     rooms.push(newRoom);
     wsServer.emit("updateRoomList", rooms);
-    done(`Room ${roomName.payload} created!`);
+    done(newRoom);
   });
 
   socket.on("joinRoom", (roomName, done) => {

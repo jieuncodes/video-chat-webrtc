@@ -3,18 +3,29 @@ import { socket } from "../../socket";
 import { SubTitle, UnderLineInputBox } from "../../styles/App";
 import { useRecoilState } from "recoil";
 import { roomListState } from "../../atoms";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { SocketMsg } from "types";
 
 function CreateRoom() {
+  const navigate = useNavigate();
   const [roomList, setRoomList] = useRecoilState(roomListState);
 
-  const doorKeeper = (msg: String) => {
-    if (msg.includes("already exists")) {
-      alert(msg);
-      return;
-    }
-    console.log("msg", msg);
+  useEffect(() => {
+    socket.emit("requestRooms");
+    socket.on("receiveRooms", (receivedRooms) => {
+      setRoomList(receivedRooms);
+    });
 
-    //TODO: direct user into the room
+    return () => {
+      socket.off("receiveRooms");
+    };
+  }, []);
+
+  const doorKeeper = (msg: SocketMsg) => {
+    //validate room
+    console.log("msg", msg.id);
+    navigate(`/chat/${msg.id}`);
   };
 
   const handleRoomSubmit = (e: React.FormEvent<HTMLFormElement>) => {
