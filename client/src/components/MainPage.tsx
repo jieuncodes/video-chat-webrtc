@@ -1,14 +1,12 @@
-import Nav from "./Nav";
-import MainArea from "./MainArea";
+import Nav from "./layout/Nav";
+import MainArea from "./layout/MainArea";
 import { MainContainer } from "../styles/App";
-import ChatBox from "./ChatBox";
 
 function MainPage() {
   return (
     <MainContainer>
       <Nav />
       <MainArea />
-      {/* {isUserInRoom && <ChatBox />} */}
     </MainContainer>
   );
 }

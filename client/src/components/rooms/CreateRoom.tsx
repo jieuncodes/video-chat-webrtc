@@ -23,8 +23,7 @@ function CreateRoom() {
   }, []);
 
   const doorKeeper = (msg: SocketMsg) => {
-    //validate room
-    console.log("msg", msg.id);
+    //TODO: validate room
     navigate(`/chat/${msg.id}`);
   };
 

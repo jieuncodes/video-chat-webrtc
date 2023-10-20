@@ -11,8 +11,8 @@
     ],
     "baseUrl": "./src",
     "paths": {
-      "@/styles/*": [
-        "./src/styles/*"
+      "@/*": [
+        "*"
       ]
     },
     "allowJs": true,

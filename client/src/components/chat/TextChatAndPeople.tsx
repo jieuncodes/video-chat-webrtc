@@ -1,5 +1,5 @@
 import { Button } from "@nextui-org/react";
-import Chat from "./chat/Chat";
+import Chat from "./Chat";
 
 function TextChatAndPeople() {
   return (

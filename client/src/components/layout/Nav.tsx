@@ -1,5 +1,5 @@
 import { Button } from "@nextui-org/react";
-import { Icons } from "./Icons";
+import { Icons } from "../Icons";
 
 function Nav() {
   return (

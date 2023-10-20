@@ -1,13 +1,13 @@
 import ChatForm from "./ChatForm";
 import Messages from "./Messages";
-import { ChatBox } from "../../styles/Chat";
+import { TextChatBox } from "../../styles/Chat";
 
 function Chat() {
   return (
-    <ChatBox>
+    <TextChatBox>
       <Messages />
       <ChatForm />
-    </ChatBox>
+    </TextChatBox>
   );
 }
 export default Chat;

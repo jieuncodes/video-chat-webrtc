@@ -1,7 +1,7 @@
-import CreateRoom from "./rooms/CreateRoom";
-import RoomsList from "./rooms/RoomsList";
+import CreateRoom from "../rooms/CreateRoom";
+import RoomsList from "../rooms/RoomsList";
 import { useRecoilValue } from "recoil";
-import { roomListState } from "../atoms";
+import { roomListState } from "../../atoms";
 
 function Contents() {
   const roomList = useRecoilValue(roomListState);

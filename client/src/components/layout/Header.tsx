@@ -1,4 +1,4 @@
-import { SubTitle, Title } from "../styles/App";
+import { SubTitle, Title } from "../../styles/App";
 
 function Header({ title }: { title: string }) {
   return (
