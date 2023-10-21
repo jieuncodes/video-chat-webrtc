@@ -3,6 +3,7 @@ import {
   LogIn,
   MessageSquare,
   MessagesSquare,
+  Plus,
   Send,
   Users,
   Video,
@@ -16,4 +17,5 @@ export const Icons = {
   home: Home,
   users: Users,
   messagesSquare: MessagesSquare,
+  plus: Plus,
 };

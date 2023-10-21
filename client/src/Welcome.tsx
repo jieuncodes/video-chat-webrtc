@@ -24,7 +24,7 @@ function Welcome() {
         <GetStartedBtn
           color="primary"
           variant="shadow"
-          onPress={navigate("/auth")}
+          onPress={() => navigate("/auth")}
         >
           Get Started
         </GetStartedBtn>
