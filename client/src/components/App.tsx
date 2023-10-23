@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Welcome from "../Welcome";
 import { AppContainer } from "../styles/App";
-import Auth from "./Auth";
+import Auth from "./auth/Auth";
 import MainPage from "./MainPage";
 import ChatRoom from "./rooms/ChatRoom";
 

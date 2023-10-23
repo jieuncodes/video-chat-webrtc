@@ -9,7 +9,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <NextUIProvider>
       <RecoilRoot>
-        <App />
+        <main className="dark text-foreground bg-background">
+          <App />
+        </main>
       </RecoilRoot>
     </NextUIProvider>
   </React.StrictMode>
