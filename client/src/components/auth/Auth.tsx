@@ -1,16 +1,7 @@
-import {
-  AuthCard,
-  AuthCardBody,
-  AuthContainer,
-  AuthDesc,
-  AuthForm,
-  Form,
-  NickNameBox,
-} from "../../styles/Auth";
-import { Icons } from "../Icons";
+import { AuthCard, AuthCardBody, AuthContainer } from "../../styles/Auth";
 import { makeMessage } from "../../helpers";
 import { useNavigate } from "react-router-dom";
-import { Tabs, Tab, Input, Link, Button } from "@nextui-org/react";
+import { Tabs, Tab } from "@nextui-org/react";
 import { useState } from "react";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";

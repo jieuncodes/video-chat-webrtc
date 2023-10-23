@@ -6,7 +6,7 @@ function SignUpForm({
   setSelected: React.Dispatch<React.SetStateAction<string>>;
 }) {
   return (
-    <form className="flex flex-col gap-4 h-[300px]">
+    <form className="flex flex-col gap-4 h-[300px] mt-3">
       <Input
         isRequired
         label="Name"

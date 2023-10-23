@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { Room } from "types";
 import { roomListState } from "../../atoms";
-import ChatRoomCard from "../../components/chat/ChatRoomCard";
+import ChatRoomCard from "../chat/ChatRoomCard";
 import { socket } from "../../socket";
 import { Button } from "@nextui-org/react";
 import { Icons } from "../Icons";
