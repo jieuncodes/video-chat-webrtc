@@ -9,6 +9,3 @@ export type SocketMsg = {
     payload: string;
   };
 };
-interface HeaderProps {
-  title: string;
-  chatNum?: string;

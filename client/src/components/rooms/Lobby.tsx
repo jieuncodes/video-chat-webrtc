@@ -8,7 +8,7 @@ import { Button } from "@nextui-org/react";
 import { Icons } from "../Icons";
 import { Navigate, useNavigate } from "react-router-dom";
 
-function RoomsList() {
+function Lobby() {
   const navigate = useNavigate();
 
   const [roomList, setRoomList] = useRecoilState<Room[]>(roomListState);
@@ -43,4 +43,4 @@ function RoomsList() {
     </div>
   );
 }
-export default RoomsList;
+export default Lobby;
