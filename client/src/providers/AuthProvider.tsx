@@ -24,7 +24,7 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   const { loginWithGoogle, logout, onAuthChange } = useAuthService();
-  const { sendTokenToServer } = useServerService();
+  const { sendToServer } = useServerService();
 
   useEffect(() => {
     const unsubscribe = onAuthChange((user) => {
@@ -37,9 +37,8 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = async () => {
     try {
       const { token, user } = await loginWithGoogle();
-
       if (token) {
-        const data = await sendTokenToServer(token);
+        const data = await sendToServer({ token, user });
 
         console.log(
           data.success ? "Google login succeed!" : "Google login failed"

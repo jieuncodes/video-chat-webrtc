@@ -8,6 +8,7 @@ const CLIENT_PORT = process.env.CLIENT_PORT || 3000;
 const app = express();
 
 app.use(cors({ origin: `http://localhost:${CLIENT_PORT}` }));
+app.use(express.json());
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello!");
@@ -15,6 +16,8 @@ app.get("/", (req: Request, res: Response) => {
 
 app.post("/auth", (req: Request, res: Response) => {
   console.log("google login req arrived to the server");
+  console.log("token", req.body.token);
+  console.log("user", req.body.user);
 });
 
 app.get("/*", (req: Request, res: Response) => res.redirect("/"));
