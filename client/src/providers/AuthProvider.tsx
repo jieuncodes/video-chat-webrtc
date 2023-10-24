@@ -1,10 +1,6 @@
-import {
-  getAuth,
-  signInWithPopup,
-  GoogleAuthProvider,
-  onAuthStateChanged,
-  User,
-} from "firebase/auth";
+import useAuthService from "../hooks/useAuthService";
+import useServerService from "../hooks/useServerService";
+import { User } from "firebase/auth";
 import { createContext, useContext, useState, useEffect } from "react";
 
 interface AuthContextType {
@@ -22,69 +18,41 @@ export function useAuth() {
   }
   return context;
 }
+
 function AuthProvider({ children }: { children: React.ReactNode }) {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const auth = getAuth();
-  const provider = new GoogleAuthProvider();
+  const { loginWithGoogle, logout, onAuthChange } = useAuthService();
+  const { sendTokenToServer } = useServerService();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthChange((user) => {
       setCurrentUser(user);
       setLoading(false);
     });
     return unsubscribe;
-  }, [auth]);
+  }, [onAuthChange]);
 
-  const sendTokenToServer = async (token: string) => {
+  const login = async () => {
     try {
-      const response = await fetch(
-        `http://${import.meta.env.VITE_SERVER_URL}/auth`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ token: token }),
-        }
-      );
-      const data = await response.json();
-      if (data.success) {
-        // if success
-        console.log("google login succeed!");
-      } else {
-        // if login fail
-        console.log("google login failed");
+      const { token, user } = await loginWithGoogle();
+
+      if (token) {
+        const data = await sendTokenToServer(token);
+
+        console.log(
+          data.success ? "Google login succeed!" : "Google login failed"
+        );
       }
     } catch (error) {
-      console.error("Error sending token to server:", error);
+      console.error("Error during login:", error);
     }
-  };
-
-  const loginWithGoogle = async () => {
-    try {
-      const result = await signInWithPopup(auth, provider);
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential?.accessToken;
-      const user = result.user;
-      console.log("token", token);
-      console.log("user", user);
-      if (token) {
-        await sendTokenToServer(token);
-      }
-    } catch (error: unknown) {
-      console.error(error);
-    }
-  };
-
-  const logout = () => {
-    return auth.signOut();
   };
 
   const value = {
     currentUser,
-    loginWithGoogle,
+    loginWithGoogle: login,
     logout,
   };
 
