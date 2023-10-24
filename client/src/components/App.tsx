@@ -10,10 +10,12 @@ import { AppContainer } from "../styles/App";
 import Auth from "./auth/Auth";
 import MainPage from "./MainPage";
 import ChatRoom from "./rooms/ChatRoom";
+import { useAuth } from "../providers/AuthProvider";
 
 function App() {
   const [showWelcome, setShowWelcome] = useState(true);
-  const [isAuthorizedUser, setIsAuthorizedUser] = useState(false);
+
+  const { currentUser } = useAuth();
 
   const handleGetStarted = () => {
     setShowWelcome(false);
@@ -24,19 +26,15 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Navigate to="/welcome" />} />
-
           <Route path="/welcome" element={<Welcome />} />
+          <Route path="/auth" element={<Auth />} />
           <Route
-            path="/auth"
-            element={<Auth setIsAuthorizedUser={setIsAuthorizedUser} />}
-          />
-          <Route
-            path="/rooms"
-            element={isAuthorizedUser ? <MainPage /> : <Navigate to="/auth" />}
+            path="/lobby"
+            element={currentUser ? <MainPage /> : <Navigate to="/auth" />}
           />
           <Route
             path="/chat/:roomId"
-            element={isAuthorizedUser ? <ChatRoom /> : <Navigate to="/auth" />}
+            element={currentUser ? <ChatRoom /> : <Navigate to="/auth" />}
           />
         </Routes>
       </Router>

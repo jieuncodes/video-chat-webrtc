@@ -16,3 +16,4 @@
 -[ ] Share a link to invite a user into the created chat room.
 -[ ] Authenticadte on front end(firebase)
 -[ ] Make req from front-end to back-end with JWT(firebase)
+-[x] Google login

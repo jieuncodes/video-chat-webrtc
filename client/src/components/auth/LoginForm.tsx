@@ -4,6 +4,8 @@ import firebase from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import GoogleLogo from "./GoogleLogo";
 import { useAuth } from "../../providers/AuthProvider";
+import { useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function LoginForm({
   setSelected,
@@ -11,6 +13,11 @@ function LoginForm({
   setSelected: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const { currentUser, loginWithGoogle, logout } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate(`/lobby`);
+  }, [currentUser]);
 
   return (
     <AuthForm>

@@ -6,11 +6,7 @@ import { useState } from "react";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 
-function Auth({
-  setIsAuthorizedUser,
-}: {
-  setIsAuthorizedUser: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+function Auth({}: {}) {
   const navigate = useNavigate();
   const [selected, setSelected] = useState("login");
 
@@ -22,7 +18,6 @@ function Auth({
     const inputField = e.currentTarget.elements[0] as HTMLInputElement;
     const nickname = inputField.value.toString();
 
-    setIsAuthorizedUser(true);
     //navigate user to created room with id
     navigate("/rooms");
   };
