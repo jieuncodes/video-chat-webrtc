@@ -9,9 +9,11 @@ import {
 } from "@nextui-org/react";
 import { useAuth } from "@/providers/AuthProvider";
 import { Icons } from "./Icons";
+import useAuthService from "@/hooks/useAuthService";
 
 function UserMenuDropDown() {
   const { currentUser } = useAuth();
+  const { logout } = useAuthService();
   const iconClasses =
     "text-xl text-default-500 pointer-events-none flex-shrink-0";
 
@@ -51,6 +53,7 @@ function UserMenuDropDown() {
             color="danger"
             className="text-danger"
             startContent={<Icons.logout className={iconClasses} />}
+            onPress={logout}
           >
             Log Out
           </DropdownItem>
