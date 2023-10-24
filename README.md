@@ -17,3 +17,4 @@
 -[ ] Authenticadte on front end(firebase)
 -[ ] Make req from front-end to back-end with JWT(firebase)
 -[x] Google login
+-[ ] User Settings page

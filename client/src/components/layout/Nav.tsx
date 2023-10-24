@@ -2,9 +2,9 @@ import { NavContainer, NavMenuContainer } from "@/styles/Nav";
 import { Avatar, Button } from "@nextui-org/react";
 import { Icons } from "../Icons";
 import { useAuth } from "@/providers/AuthProvider";
+import UserMenuDropDown from "../UserMenuDropDown";
 
 function Nav() {
-  const { currentUser } = useAuth();
   return (
     <NavContainer>
       <div className="w-16 h-16 flex items-center justify-center ">
@@ -23,12 +23,8 @@ function Nav() {
           <Icons.messagesSquare size={32} color="white" />
         </Button>
       </NavMenuContainer>
-      <div className="userBtn flex items-center justify-center">
-        <Avatar
-          isBordered
-          color="success"
-          src={currentUser?.photoURL || "images/default_user_avatar.jpeg"}
-        />
+      <div className=" flex items-center justify-center">
+        <UserMenuDropDown />
       </div>
     </NavContainer>
   );
