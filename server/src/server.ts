@@ -12,6 +12,11 @@ app.use(cors({ origin: `http://localhost:${CLIENT_PORT}` }));
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello!");
 });
+
+app.post("/auth", (req: Request, res: Response) => {
+  console.log("google login req arrived to the server");
+});
+
 app.get("/*", (req: Request, res: Response) => res.redirect("/"));
 
 let roomIdCounter = 1000;

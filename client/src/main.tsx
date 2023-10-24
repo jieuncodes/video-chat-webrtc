@@ -4,14 +4,17 @@ import ReactDOM from "react-dom/client";
 import { RecoilRoot } from "recoil";
 import App from "./components/App";
 import "./config/firebase-config";
+import AuthProvider from "./providers/AuthProvider";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <NextUIProvider>
       <RecoilRoot>
-        <main className="dark text-foreground bg-background">
-          <App />
-        </main>
+        <AuthProvider>
+          <main className="dark text-foreground bg-background">
+            <App />
+          </main>
+        </AuthProvider>
       </RecoilRoot>
     </NextUIProvider>
   </React.StrictMode>

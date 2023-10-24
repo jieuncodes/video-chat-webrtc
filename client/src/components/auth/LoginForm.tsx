@@ -3,27 +3,14 @@ import { Tab, Input, Link, Button } from "@nextui-org/react";
 import firebase from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import GoogleLogo from "./GoogleLogo";
+import { useAuth } from "../../providers/AuthProvider";
 
 function LoginForm({
   setSelected,
 }: {
   setSelected: React.Dispatch<React.SetStateAction<string>>;
 }) {
-  const provider = new GoogleAuthProvider();
-  const auth = getAuth();
-
-  const loginWithGoogle = async () => {
-    try {
-      const result = await signInWithPopup(auth, provider);
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential?.accessToken;
-      const user = result.user;
-      console.log("token", token);
-      console.log("user", user);
-    } catch (error: unknown) {
-      console.error(error);
-    }
-  };
+  const { currentUser, loginWithGoogle, logout } = useAuth();
 
   return (
     <AuthForm>
