@@ -1,15 +1,18 @@
-import { Button } from "@nextui-org/react";
+import { NavContainer, NavMenuContainer } from "@/styles/Nav";
+import { Avatar, Button } from "@nextui-org/react";
 import { Icons } from "../Icons";
+import { useAuth } from "@/providers/AuthProvider";
 
 function Nav() {
+  const { currentUser } = useAuth();
   return (
-    <div className="grid grid-rows-[1fr_9fr_1fr] border-r-2 border-r-white/20 items-center justify-center p-3">
+    <NavContainer>
       <div className="w-16 h-16 flex items-center justify-center ">
         <Button isIconOnly size="lg">
           <Icons.video />
         </Button>
       </div>
-      <div className="menu flex flex-col items-center justify-center gap-10">
+      <NavMenuContainer>
         <Button isIconOnly variant="light">
           <Icons.home size={32} color="white" />
         </Button>
@@ -19,9 +22,15 @@ function Nav() {
         <Button isIconOnly variant="light">
           <Icons.messagesSquare size={32} color="white" />
         </Button>
+      </NavMenuContainer>
+      <div className="userBtn flex items-center justify-center">
+        <Avatar
+          isBordered
+          color="success"
+          src={currentUser?.photoURL || "images/default_user_avatar.jpeg"}
+        />
       </div>
-      <div className="userBtn"></div>
-    </div>
+    </NavContainer>
   );
 }
 export default Nav;

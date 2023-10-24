@@ -1,11 +1,9 @@
-import { AuthDesc, AuthForm } from "../../styles/Auth";
-import { Tab, Input, Link, Button } from "@nextui-org/react";
-import firebase from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import GoogleLogo from "./GoogleLogo";
-import { useAuth } from "../../providers/AuthProvider";
+import { Button, Input, Link, Tab } from "@nextui-org/react";
 import { useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../providers/AuthProvider";
+import { AuthDesc, AuthForm } from "../../styles/Auth";
+import GoogleLogo from "./GoogleLogo";
 
 function LoginForm({
   setSelected,
